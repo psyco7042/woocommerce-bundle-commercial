@@ -7,6 +7,7 @@
 }
 #woocommerce-coupon-data .panel-wrap, #woocommerce-product-data .panel-wrap, .woocommerce .panel-wrap{
     height: 60vh;
+    overflow: auto !important;
 }
 .vscomp-ele{
     max-width: 800px !important;
@@ -14,4 +15,23 @@
 .repeater-item{
     margin-top: 25px;
     margin-left: 20px;
+}
+.add-item{
+    margin-left: 12px;
+    float: right;
+    margin-right: 36px;
+    margin-top: 50px;
+    width: 78%;
+    padding: 10px 10px;
+}
+.remove-item{
+    padding: 7px;
+}
+.repeater-container{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+#hidden-value{
+    display: none;
 }

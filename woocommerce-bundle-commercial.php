@@ -21,6 +21,7 @@
      include_once plugin_dir_path(__FILE__) . 'includes/type-selecter.php';
      include_once plugin_dir_path(__FILE__) . 'includes/admin/admin-tab.php';
      include_once plugin_dir_path(__FILE__) . 'includes/admin/select-product.php';
+     include_once plugin_dir_path(__FILE__) . 'includes/save-data.php';
  }
  add_action('plugins_loaded', 'wbjbl_woo_check');
 
@@ -29,7 +30,8 @@ wp_enqueue_style('main', plugins_url('assets/css/main.css', __FILE__), array('vi
 wp_enqueue_script('main', plugins_url('assets/js/main.js'), array('jquery', 'virtual-select'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/main.js'), true);
 // wp_enqueue_script('virtual-select', plugins_url('assets/js/virtual-select.min.js'), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/virtual-select.min.js'), true);
 wp_enqueue_script('virtual-select', plugins_url('assets/js/virtual-select.min.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/virtual-select.min.js'), true);
-wp_enqueue_script('virtual-select-init', plugins_url('assets/js/virtual-select-init.js', __FILE__), array('jequery', 'virtual-select'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/virtual-select-init.js'), true);
+wp_enqueue_script('repeater', plugins_url('assets/js/repeater.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/repeater.js'), true);
+
 
 
 
