@@ -1,3 +1,0 @@
-VirtualSelect.init({ 
-    ele: 'select' 
-});
