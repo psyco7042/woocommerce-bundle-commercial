@@ -5,3 +5,13 @@
 #bundle_form_wbjbl{
     width: 60% !important;
 }
+#woocommerce-coupon-data .panel-wrap, #woocommerce-product-data .panel-wrap, .woocommerce .panel-wrap{
+    height: 60vh;
+}
+.vscomp-ele{
+    max-width: 800px !important;
+}
+.repeater-item{
+    margin-top: 25px;
+    margin-left: 20px;
+}

@@ -12,18 +12,46 @@
         'numberposts' => -1,
         'fields'      => 'ids',
     ));
+    foreach ($products as $product_id) {
+        $product = wc_get_product($product_id);
+        if ($product) {
+            $product_data[] = array(
+                'name' => $product->get_name(),
+                'id'   => $product_id
+            );
+        }
+    }
+
+
     ?>
     <div id="wbjbl_bundle_data" class='panel woocommerce_options_panel wbjbl-admin-main'>
-        <div class="options-group">
-            <h3>Choose the products to be included in the bundle</h3>
-            <p>You can choose individual products for the bundle or select them by category</p>
+        <div class="options-group wrap">
+            <div id="my-products-list" style="display:none"><?php echo json_encode($product_data); ?></div>
+            <h3 style="
+                padding-left: 20px;
+                margin-bottom: 0px;
+            ">Choose the products to be included in the bundle</h3>
+            <p style="
+                padding-left: 20px;
+                margin-bottom: 0px;
+            ">You can choose individual products for the bundle or select them by category</p>
+            <div class="repeater-item">
             <label class="custom-wbjbl-label">Multiple Select</label>
-            <select class="productSelect" multiple name="native-select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <!-- Add other options as needed -->
-            </select>
+                <select class="productSelect" multiple name="native-select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                    <?php 
+                    foreach ($products as $product_id) {
+                        $product = wc_get_product($product_id);
+                        if ($product) {
+                            // $product_data[] = array(
+                            //     'name' => $product->get_name(),
+                            //     'id'   => $product_id
+                            // );
+                            echo '<option value="'. esc_html($product_id) .'">' . esc_html($product->get_name()) . '</option>';
+                        }
+                    } 
+                    ?>
+                </select>
+            </div>
         </div>
     </div>
     
