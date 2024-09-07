@@ -24,7 +24,9 @@
  }
  add_action('plugins_loaded', 'wbjbl_woo_check');
 
-wp_enqueue_style('main', plugins_url('assets/css/main.css', __FILE__), '', filemtime(plugin_dir_path(__FILE__) . 'assets/css/main.css'), 'all');
-wp_enqueue_script('main', plugins_url('assets/js/main.js'), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/main.js'), true);
+wp_enqueue_style('virtual-select', plugins_url('assets/css/virtual-select.min.css', __FILE__), '', filemtime(plugin_dir_path(__FILE__) . 'assets/css/virtual-select.min.css'), 'all');
+wp_enqueue_style('main', plugins_url('assets/css/main.css', __FILE__), array('virtual-select'), filemtime(plugin_dir_path(__FILE__) . 'assets/css/main.css'), 'all');
+wp_enqueue_script('main', plugins_url('assets/js/main.js'), array('jquery', 'virtual-select'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/main.js'), true);
+wp_enqueue_script('virtual-select', plugins_url('assets/js/virtual-select.min.js'), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/virtual-select.min.js'), true);
 
 
