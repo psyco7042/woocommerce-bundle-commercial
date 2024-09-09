@@ -4,15 +4,15 @@
  * 
  * @see https://webkul.com/blog/create-a-custom-product-type-in-woocommerce/
  */
+  
 
- function wbjbl_create_product_type(){
-    class JB_Product_bundle extends WC_Product {
-        public function __construct($product = 0) {
-            $this->set_props([
-                'type' => 'wbjbl_bundle',
-            ]);
-            parent::__construct($product);
-        }
+  
+function bbloomer_create_custom_product_type(){
+    class WC_Product_Custom extends WC_Product {
+      public function get_type() {
+         return 'custom';
+      }
     }
 }
-add_action('init', 'wbjbl_create_product_type');
+
+add_action( 'init', 'bbloomer_create_custom_product_type' );
