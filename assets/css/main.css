@@ -35,3 +35,10 @@
 #hidden-value{
     display: none;
 }
+.bundle-item{
+    display: flex;
+}
+.custom-wbjbl-label{
+    text-align: center;
+    align-self: center !important;
+}

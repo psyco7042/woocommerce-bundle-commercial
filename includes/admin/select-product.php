@@ -47,8 +47,8 @@
             ">You can choose individual products for the bundle or select them by category</p>
             <div class="repeater-container">
                 <div class="bundle-item">
-                    <label class="custom-wbjbl-label">Multiple Select</label>
-                        <select class="productSelect" multiple name="native-select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                    <label class="custom-wbjbl-label">Select Product Groups</label>
+                        <select id="productSelect" multiple name="native-select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
                             <?php 
                             foreach ($products as $product_id) {
                                 $product = wc_get_product($product_id);
@@ -70,7 +70,7 @@
             // Use setTimeout to ensure the DOM is fully loaded and the panel is visible
             setTimeout(function() {
                 VirtualSelect.init({
-                    ele: '.productSelect'
+                    ele: '#productSelect'
                 });
             }, 100); // Adjust delay if necessary
         });
