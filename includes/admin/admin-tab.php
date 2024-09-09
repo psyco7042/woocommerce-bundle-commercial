@@ -7,7 +7,7 @@
 
  function wbjbl_add_custom_product_data_tab($tabs) {
     $tabs['wbjbl_bundle_tab'] = array(
-        'label'    => __('Bundle Data', 'text-domain'),
+        'label'    => __('Bundle Data', 'woocommerce'),
         'target'   => 'wbjbl_bundle_data',
         'class'    => array('show_if_wbjbl_bundle'),
         'priority' => 21,

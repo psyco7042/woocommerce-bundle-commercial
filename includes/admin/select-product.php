@@ -22,7 +22,6 @@
         }
     }
 
-
     ?>
     <div id="wbjbl_bundle_data" class='panel woocommerce_options_panel wbjbl-admin-main'>
         <div id="hidden-value">
@@ -48,7 +47,7 @@
             <div class="repeater-container">
                 <div class="bundle-item">
                     <label class="custom-wbjbl-label">Select Product Groups</label>
-                        <select id="productSelect" multiple name="native-select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                        <select id="productSelect" multiple name="native_select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
                             <?php 
                             foreach ($products as $product_id) {
                                 $product = wc_get_product($product_id);

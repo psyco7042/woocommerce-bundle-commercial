@@ -7,9 +7,11 @@
 
  function wbjbl_create_product_type(){
     class JB_Product_bundle extends WC_Product {
-        public function __construct($product){
-            $this->product_type = 'wbjbl_bundle';
-            parent::__construct($product);  // Use 'parent::__construct' instead of '$parent::__construct'
+        public function __construct($product = 0) {
+            $this->set_props([
+                'type' => 'wbjbl_bundle',
+            ]);
+            parent::__construct($product);
         }
     }
 }
