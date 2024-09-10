@@ -42,3 +42,94 @@
     text-align: center;
     align-self: center !important;
 }
+
+/* modal css for frontend */
+
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.4rem;
+    width: 90%;
+    padding: 1.3rem;
+    min-height: 700px;
+    position: absolute;
+    top: -10%;
+    right: 5%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    z-index: 999;
+}
+.products-container{
+    display: flex;
+    gap: 20px;
+}
+.card-title{
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+.card{
+    border: 1px solid #ADADAD;
+    border-radius: 15px;
+    width: 26%;
+}
+.card-img img{
+    border-radius: 15px;
+}
+.modal-main-container{
+    height: 98%;
+}
+.card-body{
+    width: 100%;
+    border-top: 1px solid #ADADAD;
+    padding: 10px;
+}
+.product-prices{
+    display: flex;
+    gap: 20px;
+}
+.regular{
+    text-decoration: line-through;
+}
+.product-prices p{
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 0px;
+}
+.clild-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 1.3rem;
+    min-height: 700px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    z-index: 999;
+}
+.variation-container{
+    display: flex;
+    gap: 20px;
+}
+.hidden{
+    display: none;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    z-index: 99;
+  }
