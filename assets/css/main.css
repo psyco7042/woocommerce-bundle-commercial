@@ -132,4 +132,14 @@
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(3px);
     z-index: 99;
-  }
+}
+.modal-header{
+    display: flex;
+    border-bottom: 2px solid #000;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.modal-header h5{
+    width: 100%;
+    text-align: center;
+}
