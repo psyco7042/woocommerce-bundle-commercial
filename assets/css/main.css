@@ -143,3 +143,58 @@
     width: 100%;
     text-align: center;
 }
+.btn-open{
+    padding: 60px;
+    border-radius: 15px;
+}
+.btn-open:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: transparent;
+}
+.btn{
+    outline: none;
+    background: transparent;
+    border: 1px solid #ADADAD;
+    border-radius: 15px;
+}
+.simple{
+    border: none !important;
+    color: #000
+}
+.simple:hover{
+    background-color: transparent;
+    color:#ADADAD
+}
+.simple:focus{
+    background: transparent;
+    color: #000;
+}
+.selected{
+    border: 1px solid #ADADAD;
+    border-radius: 15px;
+}
+.selected h3{
+    padding: 5px 10px 5px 10px;
+    border-top: 1px solid #ADADAD;
+    font-size: 1.2rem;
+    margin-top: -6px;
+}
+.selected .no-img{
+    height: 101px !important;
+}
+.selected img{
+    height: 109px !important;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+.selected-container button{
+    position: absolute;
+    z-index: 99;
+    border-radius: 50%;
+    border: 1px solid #000 !important;
+    background: #ADADAD;
+    color: #000;
+}
+.selected-container button:hover, .selected-container button:focus{
+    background-color: #ddd;
+}

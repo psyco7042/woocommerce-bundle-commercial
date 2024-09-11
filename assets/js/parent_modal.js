@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
         var modal = jQuery(modalId);
         var buttonId= '#parent_' + i;  
         var buttonEle = jQuery(buttonId);
-        var closeID = '#btn_close_' + i;
+        var closeId = '#btn_close_' + i;
 
         buttonEle.on('click', function(){
             const currentButtonId = jQuery(this).attr('id');
@@ -18,7 +18,7 @@ jQuery(document).ready(function(){
 
         });
 
-        jQuery(closeID).on('click', function(){
+        jQuery(closeId).on('click', function(){
             const currentCloseId = jQuery(this).attr('id');
             const currentIndex = currentCloseId.split('_')[2];
             const currentModal = jQuery('#modal_' + currentIndex);
@@ -28,7 +28,6 @@ jQuery(document).ready(function(){
             currentOverlay.addClass('hidden');
         });
 
-
-    }
+    };
     
 });
