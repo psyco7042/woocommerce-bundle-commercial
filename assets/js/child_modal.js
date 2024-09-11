@@ -4,9 +4,9 @@ jQuery(document).ready(function(){
         var simpleId = '#simple_' + i;
         jQuery(simpleId).on('click', function(){
             const currentModalMainContainer = jQuery(this).closest('.modal-main-container');
-            const modalMainHtml = currentModalMainContainer.html();
             const currentModal = jQuery(this).closest('.modal');
             const currentOverlay = currentModalMainContainer.children('.overlay');
+            const currentAddButton = currentModalMainContainer.children('.item-group-front');
             const modalMainId = '#' + currentModalMainContainer.attr('id');
             
             // selectedProduct
@@ -20,14 +20,16 @@ jQuery(document).ready(function(){
             // Actions Performed onclick
             currentModal.addClass('hidden');
             currentOverlay.addClass('hidden');
+            currentAddButton.addClass('hidden');
+            
 
             
             jQuery(modalMainId).addClass('selected');
-            jQuery(modalMainId).html(displaySelected);
+            jQuery(modalMainId).append(displaySelected);
             jQuery(modalMainId + "> div > button").on('click', function(){
-                jQuery(modalMainId).html(modalMainHtml);
+                jQuery(this).closest('.selected-container').remove();
                 jQuery(modalMainId).removeClass('selected');
-                // currentModal.addClass('hidden');
+                currentAddButton.removeClass('hidden');
             });
         });
     };
