@@ -15,6 +15,7 @@
         echo '<div class="item-container-main" style="display:flex; gap:20px">';
         $i = 1;
         foreach($product_info as $item_nfo){
+            $variable_number = 1; // Initialize variable number counter for each modal
             ?>
                 <div class="modal-main-container" id="modal_container_<?php echo $i; ?>">
                     <div class="modal hidden" id="modal_<?php echo $i; ?>">
@@ -53,13 +54,16 @@
                                                 <h3 class="card-title"><?php echo esc_html($product->get_name()); ?></h3>
                                                     <?php
                                                         if ($product->is_type('variable')){
-                                                            $variable_number = 1;
                                                             echo '<button class="btn variable" id="variable_'. $variable_number .'">select options</button>';
                                                             $variations = $product->get_available_variations();
                                                             if (!empty($variations)) {
                                                                 ?>
                                                                     <div class="child-modal-container">
-                                                                        <div class="clild-modal hidden">
+                                                                        <div class="child-modal hidden">
+                                                                        <div class="var-modal-header">
+                                                                            <h5>Please select your Product</h5>
+                                                                            <button class="btn variable-close" id="var_btn_close_<?php echo $variable_number; ?>">&lArr;</button>
+                                                                        </div>
                                                                             <div class="variation-container">
                                                                                 <?php
                                                                                     foreach ($variations as $variation) {
@@ -105,8 +109,8 @@
                                                                         </div>
                                                                     </div>
                                                                 <?php
-                                                            }
-                                                            $variable_number++;
+                                                            }                                                            
+                                                            $variable_number++; // Increment variable number for each new variable button
                                                         } else {
                                                             $product_number = 1;
                                                             ?>
@@ -147,3 +151,4 @@
     }
  }
  add_action( 'woocommerce_single_product_summary', 'wbjbl_product_bundle_front' );
+?>

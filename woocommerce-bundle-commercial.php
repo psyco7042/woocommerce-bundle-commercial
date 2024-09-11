@@ -34,6 +34,7 @@ wp_enqueue_script('virtual-select', plugins_url('assets/js/virtual-select.min.js
 wp_enqueue_script('repeater', plugins_url('assets/js/repeater.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/repeater.js'), true);
 wp_enqueue_script('parent-modal', plugins_url('assets/js/parent_modal.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/parent_modal.js'), true);
 wp_enqueue_script('child-modal', plugins_url('assets/js/child_modal.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/child_modal.js'), true);
+wp_enqueue_script('grand-child-modal', plugins_url('assets/js/grand_child_modal.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/grand_child_modal.js'), true);
 
 
 

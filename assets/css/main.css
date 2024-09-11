@@ -98,7 +98,7 @@
     color: #2c2c2c;
     margin-bottom: 0px;
 }
-.clild-modal{
+.child-modal{
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -197,4 +197,14 @@
 }
 .selected-container button:hover, .selected-container button:focus{
     background-color: #ddd;
+}
+.var-modal-header{
+    display: flex;
+    border-bottom: 2px solid #000;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.var-modal-header h5{
+    width: 100%;
+    text-align: center;
 }
