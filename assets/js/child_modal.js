@@ -8,6 +8,7 @@ jQuery(document).ready(function(){
             const currentOverlay = currentModalMainContainer.children('.overlay');
             const currentAddButton = currentModalMainContainer.children('.item-group-front');
             const modalMainId = '#' + currentModalMainContainer.attr('id');
+            const currSummary = jQuery(modalMainId).closest('.summary');
             
             // selectedProduct
             var currentProductCard = jQuery(this).closest('.card');
