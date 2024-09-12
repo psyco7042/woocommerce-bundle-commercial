@@ -208,3 +208,7 @@
     width: 100%;
     text-align: center;
 }
+.display-price{
+    display: flex;
+    gap: 10px;
+}

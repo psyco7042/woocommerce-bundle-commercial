@@ -97,8 +97,8 @@
                                                                                                         ?>
                                                                                                     </h3>
                                                                                                     <div class="product-prices option-price">
-                                                                                                        <p class="regular"><?php echo $currency . ' ' . $variation_product->get_regular_price() . '/-';?></p>
-                                                                                                        <p><?php echo $currency . ' ' . $variation_product->get_sale_price() . '/-';?></p>
+                                                                                                        <p class="regular option-regular"><?php echo $currency . ' ' . $variation_product->get_regular_price() . '/-';?></p>
+                                                                                                        <p class="option-sale"><?php echo $currency . ' ' . $variation_product->get_sale_price() . '/-';?></p>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -116,7 +116,7 @@
                                                             ?>
                                                                 <div class="product-prices">
                                                                     <p class="regular"><?php echo wc_price($product->get_regular_price()); ?></p>
-                                                                    <p><?php echo wc_price($product->get_sale_price());?></p>
+                                                                    <p class="sale"><?php echo wc_price($product->get_sale_price());?></p>
                                                                 </div>
                                                                 <button class="btn simple" id="simple_<?php echo $product_number?>">add to selection</button>
                                                             <?php
@@ -148,6 +148,8 @@
             $i++;
         }
         echo '</div>';
+        ?>
+        <?php
     }
  }
  add_action( 'woocommerce_single_product_summary', 'wbjbl_product_bundle_front' );
