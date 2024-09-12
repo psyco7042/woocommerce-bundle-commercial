@@ -73,12 +73,12 @@
                                                                                         $variation_image_url = wp_get_attachment_url($variation_image_id);
                                                                                         $attributes = $variation_product->get_attributes();
                                                                                         ?>
-                                                                                            <div class="card">
-                                                                                                <div class="card-img">
+                                                                                            <div class="card option-card">
+                                                                                                <div class="card-img option-img">
                                                                                                     <img src="<?php echo $variation_image_url ?>" alt="<?php echo esc_attr($variation_product->get_name()); ?>">
                                                                                                 </div>
-                                                                                                <div class="card-body">
-                                                                                                    <h3 class="card-title">
+                                                                                                <div class="card-body option-body">
+                                                                                                    <h3 class="card-title option-title">
                                                                                                         <?php
                                                                                                             foreach ($attributes as $taxonomy => $value) {
                                                                                                                 if (strpos($taxonomy, 'pa_') !== false) {
@@ -96,7 +96,7 @@
                                                                                                             }
                                                                                                         ?>
                                                                                                     </h3>
-                                                                                                    <div class="product-prices">
+                                                                                                    <div class="product-prices option-price">
                                                                                                         <p class="regular"><?php echo $currency . ' ' . $variation_product->get_regular_price() . '/-';?></p>
                                                                                                         <p><?php echo $currency . ' ' . $variation_product->get_sale_price() . '/-';?></p>
                                                                                                     </div>

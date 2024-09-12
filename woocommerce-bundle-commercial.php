@@ -24,6 +24,7 @@
      include_once plugin_dir_path(__FILE__) . 'includes/admin/select-product.php';
      include_once plugin_dir_path(__FILE__) . 'includes/save-data.php';
      include_once plugin_dir_path(__FILE__) . 'includes/templates/bundle-template.php';
+     include_once plugin_dir_path(__FILE__) . 'includes/templates/product-summary.php';
  }
  add_action('plugins_loaded', 'wbjbl_woo_check');
 
