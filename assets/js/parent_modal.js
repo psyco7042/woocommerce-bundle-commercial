@@ -15,7 +15,7 @@ jQuery(document).ready(function(){
 
             currentModal.removeClass('hidden');
             currentOverlay.removeClass('hidden');
-
+            
         });
 
         jQuery(closeId).on('click', function(){
