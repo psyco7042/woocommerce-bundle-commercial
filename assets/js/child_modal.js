@@ -10,8 +10,10 @@ jQuery(document).ready(function(){
             const modalMainId = '#' + currentModalMainContainer.attr('id');
             const currSummary = jQuery(modalMainId).closest('.summary');
             const price = jQuery(currSummary).find('.price');
-
-            
+        
+            // Declare priceEntered outside the if-else block
+            var priceEntered = 0;
+        
             // selectedProduct
             var currentProductCard = jQuery(this).closest('.card');
             var cardHead = currentProductCard.children('.card-img');
@@ -20,47 +22,52 @@ jQuery(document).ready(function(){
             var cardPrice = cardBody.children('.product-prices');
             var simpleRegular = cardPrice.children('.regular');
             var simpleSale = cardPrice.children('.sale');
-            var priceEntered = 0;
-            if(simpleSale !== undefined && simpleSale !== null){
-                if(price.text() == ''){
-                    price.text(simpleSale.text().match(/\d+/)[0].toString());
-                } else{
-                    priceEntered = simpleSale.text().match(/\d+/)[0];
-                    var simplePrevious = price.text().match(/\d+/);
-                    var simpleNew = parseInt(simplePrevious) + parseInt(priceEntered);
-                    price.text(simpleNew.toString());
-                }
+        
+            if (simpleSale !== undefined && simpleSale !== null) {
+                priceEntered = parseInt(simpleSale.text().match(/\d+/)[0]); // Get the sale price
             } else {
-                if(price.text() == ''){
-                    price.text(simpleRegular.text().match(/\d+/)[0].toString());
-                } else{
-                    priceEntered = simpleRegular.text().match(/\d+/)[0];
-                    var simplePrevious = price.text().match(/\d+/);
-                    var simpleNew = parseInt(simplePrevious) + parseInt(priceEntered);
-                    price.text(simpleNew.toString());
-                }
+                priceEntered = parseInt(simpleRegular.text().match(/\d+/)[0]); // Get the regular price
             }
-            var displaySelected = '<div class="selected-container"><button class="btn-remove">&times</button>' + '<div class="selected_product">' 
+        
+            // Update the price
+            if (price.text() === '') {
+                price.text(priceEntered.toString());
+            } else {
+                var simplePrevious = parseInt(price.text().match(/\d+/)[0]);
+                var simpleNew = simplePrevious + priceEntered;
+                priceEntered = simpleNew; 
+                price.text(simpleNew.toString());
+            }
+        
+            var displaySelected = '<div class="selected-container"><button class="btn-remove">&times</button>' + 
+                                    '<div class="selected_product">' 
                                     + cardHead.html() 
                                     + '<h3>' 
-                                    +cardTitle.html() + '</h3><p class="hidden hidden-price">'
-                                    +'</p> </div></div>';
-
-            // Actions Performed onclick
+                                    + cardTitle.html() + '</h3><p class="hidden hidden-price">'
+                                    + priceEntered 
+                                    + '</p> </div></div>';
+        
+            // Actions performed on click
             currentModal.addClass('hidden');
             currentOverlay.addClass('hidden');
             currentAddButton.addClass('hidden');
-            
-
-            
+        
             jQuery(modalMainId).addClass('selected');
             jQuery(modalMainId).append(displaySelected);
+        
+            // Remove button functionality
             jQuery(modalMainId + "> div > button").on('click', function(){
-
-                jQuery(this).closest('.selected-container').remove();
+                var selectedContainer = jQuery(this).closest('.selected-container');
+                var summaryNew = jQuery(selectedContainer).closest('.summary');
+                var priceOld = jQuery(summaryNew).find('.price');
+                var hiddenPriceSimple = jQuery(selectedContainer).find('.hidden-price');
+                var priceNew = parseInt(priceOld.text()) - parseInt(hiddenPriceSimple.text());
+                priceOld.text(priceNew.toString());
+                selectedContainer.remove();
                 jQuery(modalMainId).removeClass('selected');
                 currentAddButton.removeClass('hidden');
             });
         });
+        
     };
 });
