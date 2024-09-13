@@ -24,9 +24,14 @@
      include_once plugin_dir_path(__FILE__) . 'includes/admin/select-product.php';
      include_once plugin_dir_path(__FILE__) . 'includes/save-data.php';
      include_once plugin_dir_path(__FILE__) . 'includes/templates/bundle-template.php';
-   //   include_once plugin_dir_path(__FILE__) . 'includes/templates/product-summary.php';
+     include_once plugin_dir_path(__FILE__) . 'includes/add-to-cart.php';
  }
  add_action('plugins_loaded', 'wbjbl_woo_check');
+
+ function wbcplugin_ajaxurl(){
+   echo '<script> var ajaxurl = "'. admin_url('admin_ajax.php') .'"</script>';
+ } 
+ add_action('wp_head', 'wbcplugin_ajaxurl');
 
 wp_enqueue_style('virtual-select', plugins_url('assets/css/virtual-select.min.css', __FILE__), '', filemtime(plugin_dir_path(__FILE__) . 'assets/css/virtual-select.min.css'), 'all');
 wp_enqueue_style('main', plugins_url('assets/css/main.css', __FILE__), array('virtual-select'), filemtime(plugin_dir_path(__FILE__) . 'assets/css/main.css'), 'all');
@@ -40,4 +45,11 @@ wp_enqueue_script('grand-child-modal', plugins_url('assets/js/grand_child_modal.
 
 
 
-
+function enqueue_custom_bundle_scripts() {
+   wp_enqueue_script('add-to-cart-ajax', plugins_url('assets/js/Ajax/add_to_cart_ajax.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/Ajax/add_to_cart_ajax.js'), true);
+   wp_localize_script('add-to-cart-ajax', 'wc_add_to_cart_params', array(
+      'ajax_url' => admin_url('admin-ajax.php'),
+      'ajax_nonce' => wp_create_nonce('add_to_cart_ajax_nonce')
+   ));
+}
+add_action('plugins_loaded', 'enqueue_custom_bundle_scripts');
