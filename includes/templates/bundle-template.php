@@ -151,6 +151,7 @@
         ?>
         <?php
     }
+    
  }
  add_action( 'woocommerce_single_product_summary', 'wbjbl_product_bundle_front' );
 ?>

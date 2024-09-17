@@ -54,7 +54,7 @@
     padding: 1.3rem;
     min-height: 700px;
     position: absolute;
-    top: -10%;
+    top: 10%;
     right: 5%;
     background-color: white;
     border: 1px solid #ddd;
@@ -191,8 +191,8 @@
     position: absolute;
     z-index: 99;
     border-radius: 50%;
-    border: 1px solid #000 !important;
-    background: #ADADAD;
+    border: none !important;
+    background: transparent;
     color: #000;
 }
 .selected-container button:hover, .selected-container button:focus{

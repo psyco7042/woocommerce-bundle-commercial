@@ -18,7 +18,9 @@
         return;
      }
      include_once plugin_dir_path(__FILE__) . 'includes/register-bundle.php';
-     include_once plugin_dir_path(__FILE__) . 'includes/register.php';
+     include_once plugin_dir_path(__FILE__) . 'includes/remove-form.php';
+     include_once plugin_dir_path(__FILE__) . 'includes/custom-variation-form.php';
+     include_once plugin_dir_path(__FILE__) . 'includes/test-form.php';
      include_once plugin_dir_path(__FILE__) . 'includes/type-selecter.php';
      include_once plugin_dir_path(__FILE__) . 'includes/admin/admin-tab.php';
      include_once plugin_dir_path(__FILE__) . 'includes/admin/select-product.php';
@@ -41,15 +43,32 @@ wp_enqueue_script('repeater', plugins_url('assets/js/repeater.js', __FILE__), ar
 wp_enqueue_script('parent-modal', plugins_url('assets/js/parent_modal.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/parent_modal.js'), true);
 wp_enqueue_script('child-modal', plugins_url('assets/js/child_modal.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/child_modal.js'), true);
 wp_enqueue_script('grand-child-modal', plugins_url('assets/js/grand_child_modal.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/grand_child_modal.js'), true);
+wp_enqueue_script('variation-form-handler', plugins_url('assets/js/variation-form-handler.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/variation-form-handler.js'), true);
 
 
 
 
-function enqueue_custom_bundle_scripts() {
-   wp_enqueue_script('add-to-cart-ajax', plugins_url('assets/js/Ajax/add_to_cart_ajax.js', __FILE__), array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/Ajax/add_to_cart_ajax.js'), true);
-   wp_localize_script('add-to-cart-ajax', 'wc_add_to_cart_params', array(
-      'ajax_url' => admin_url('admin-ajax.php'),
-      'ajax_nonce' => wp_create_nonce('add_to_cart_ajax_nonce')
-   ));
+
+function wh_custom_admin_custom_js() {
+
+   if ('product' != get_post_type()) :
+       return;
+   endif;
+   ?>
+   <script type='text/javascript'>
+       jQuery(document).ready(function () {
+           //for Price tab
+           jQuery('.product_data_tabs .general_tab').addClass('show_if_custom').show();
+           jQuery('#general_product_data .pricing').addClass('show_if_custom').show();
+           //for Inventory tab
+           jQuery('.inventory_options').addClass('show_if_custom').show();
+           jQuery('#inventory_product_data ._manage_stock_field').addClass('show_if_custom').show();
+           jQuery('#inventory_product_data ._sold_individually_field').parent().addClass('show_if_custom').show();
+           jQuery('#inventory_product_data ._sold_individually_field').addClass('show_if_custom').show();
+       });
+   </script>
+   <?php
+
 }
-add_action('plugins_loaded', 'enqueue_custom_bundle_scripts');
+
+add_action('admin_footer', 'wh_custom_admin_custom_js');
