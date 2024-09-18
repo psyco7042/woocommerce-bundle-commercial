@@ -76,7 +76,10 @@ jQuery(document).ready(function() {
     var simpleLength = jQuery('.simple').length;
 
     for (var i = 1; i <= simpleLength; i++) {
-        var simpleId = '#simple_' + i;
+        var simpleId = '.simple_' + i;
+        // var simpleId = '#simple_' + i;
+        console.log({simpleId});
+        
         jQuery(simpleId).on('click', function() {
             const currentModalMainContainer = jQuery(this).closest('.modal-main-container');
             const currentModal = jQuery(this).closest('.modal');
@@ -97,6 +100,9 @@ jQuery(document).ready(function() {
             var cardPrice = cardBody.children('.product-prices');
             var simpleRegular = cardPrice.children('.regular');
             var simpleSale = cardPrice.children('.sale');
+            var currentProductId = jQuery(currentProductCard).attr('id');
+            var currentSelect = jQuery('select[name="bundle_products['+ currentProductId +'][selected]"]');
+            currentSelect.val('1');
 
             if (simpleSale.length > 0) {
                 priceEntered = parseInt(simpleSale.text().match(/\d+/)[0]); // Get the sale price
@@ -111,7 +117,7 @@ jQuery(document).ready(function() {
 
             var displaySelected = '<div class="selected-container">' +
                 '<button class="btn-remove">&times</button>' +
-                '<div class="selected_product">' +
+                '<div class="selected_product" id='+ currentProductId +' >' +
                 cardHead.html() +
                 '<h3>' +
                 cardTitle.html() + '</h3><p class="hidden hidden-price">' +
@@ -126,6 +132,9 @@ jQuery(document).ready(function() {
             jQuery(modalMainId).addClass('selected');
             jQuery(modalMainId).append(displaySelected);
 
+            // add selected class in the form options
+
+
             // Update form fields with selected product
             updateFormFields(modalMainId);
 
@@ -137,9 +146,19 @@ jQuery(document).ready(function() {
                 var hiddenPriceSimple = jQuery(selectedContainer).find('.hidden-price');
                 var priceNew = parseInt(priceOld.text()) - parseInt(hiddenPriceSimple.text());
                 priceOld.text(priceNew.toString());
+
                 selectedContainer.remove();
                 jQuery(modalMainId).removeClass('selected');
                 currentAddButton.removeClass('hidden');
+
+
+
+                // removing the selected tag
+                var currentSelect = jQuery('select[name="bundle_products[' + currentProductId + '][selected]"]');                
+                currentSelect.val('0');
+
+
+                
 
                 // Update form fields after removal
                 updateFormFields(modalMainId);

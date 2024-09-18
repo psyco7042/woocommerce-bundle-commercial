@@ -21,9 +21,9 @@ function display_bundle_form() {
         ?>
         <form id="bundle-form" method="post" action="">
             <input type="hidden" name="main_product_id" value="<?php echo esc_attr( $main_product_id ); ?>" />
-            <div class="bundle-products">
+            <div class="bundle-products hidden">
                 <?php foreach ( $product_ids as $product_id ) : ?>
-                    <div class="bundle-product">
+                    <div class="bundle-product" id="<?php echo $product_id; ?>">
                         <?php
                         $product = wc_get_product( $product_id );
                         if ( $product ) {

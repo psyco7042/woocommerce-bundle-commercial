@@ -29,9 +29,10 @@
                                     foreach ($elements as $element) {
                                         $product = wc_get_product($element);
                                         if ($product) {       
-                                            $currency = get_woocommerce_currency();                                 
+                                            $currency = get_woocommerce_currency();
+                                            $product_id = $product->get_id();                                 
                                             ?>
-                                            <div class="card">
+                                            <div class="card main-card-product" id="<?php echo $product_id; ?>">
                                                 <div class="card-img">
                                                     <?php
                                                     $image = wp_get_attachment_image_src($product->get_image_id(), 'single-post-thumbnail');
@@ -73,7 +74,7 @@
                                                                                             $variation_image_url = wp_get_attachment_url($variation_image_id);
                                                                                             $attributes = $variation_product->get_attributes();
                                                                                             ?>
-                                                                                                <div class="card option-card">
+                                                                                                <div class="card option-card" id="<?php echo $variation_id?>">
                                                                                                     <div class="card-img option-img">
                                                                                                         <img src="<?php echo $variation_image_url ?>" alt="<?php echo esc_attr($variation_product->get_name()); ?>">
                                                                                                     </div>
@@ -110,7 +111,7 @@
                                                                         </div>
                                                                     <?php
                                                                 }                                                            
-                                                                $variable_number++; // Increment variable number for each new variable button
+                                                                $variable_number++; 
                                                             } else {
                                                                 $product_number = 1;
                                                                 ?>
@@ -118,7 +119,8 @@
                                                                         <p class="regular"><?php echo wc_price($product->get_regular_price()); ?></p>
                                                                         <p class="sale"><?php echo wc_price($product->get_sale_price());?></p>
                                                                     </div>
-                                                                    <button class="btn simple" id="simple_<?php echo $product_number?>">add to selection</button>
+                                                                    <button class="btn simple simple_<?php echo $product_number?>">add to selection</button>
+                                                                    <!-- <button class="btn simple" id="simple_<?php //echo $product_number?>">add to selection</button> -->
                                                                 <?php
                                                                 $product_number++;
                                                             }
