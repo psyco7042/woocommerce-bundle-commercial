@@ -120,7 +120,7 @@
                                                                         <p class="sale"><?php echo wc_price($product->get_sale_price());?></p>
                                                                     </div>
                                                                     <button class="btn simple simple_<?php echo $product_number?>">add to selection</button>
-                                                                    <!-- <button class="btn simple" id="simple_<?php //echo $product_number?>">add to selection</button> -->
+                                                                    <!-- <button class="btn simple" id="simple_<?php // echo $product_number?>">add to selection</button> -->
                                                                 <?php
                                                                 $product_number++;
                                                             }
